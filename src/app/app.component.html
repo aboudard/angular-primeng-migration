@@ -32,10 +32,14 @@
   </div>
   <div class="col-12 md:col-6">
     <p-card header="Tree" styleClass="p-fluid mb-3">
-      <p-messages 
-        [(value)]="messages" 
-        [enableService]="false" 
-        [closable]="false" />
+      @for (message of messages(); track message; let first = $first) {
+      <p-message
+        styleClass="mb-2"
+        [severity]="message.severity"
+        [text]="message.content"
+        [closable]="false"
+      />
+      }
       <p-tree
         class="w-full md:w-30rem"
         (onNodeSelect)="nodeSelect($event)"
@@ -60,19 +64,31 @@
       <div class="field grid">
         <label for="date3" class="col-12 mb-2 md:col-2 md:mb-0">Switch</label>
         <div class="col-12 md:col-10">
-          <p-inputSwitch [(ngModel)]="checked" />
+          <p-inputSwitch
+            (onChange)="switchTheme($event)"
+            [(ngModel)]="checked"
+          />
         </div>
       </div>
       <div class="field grid">
         <label for="date3" class="col-12 mb-2 md:col-2 md:mb-0">Dropdown</label>
         <div class="col-12 md:col-10">
-          <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+          <p-dropdown
+            [options]="cities"
+            [(ngModel)]="selectedCity"
+            optionLabel="name"
+          ></p-dropdown>
         </div>
       </div>
       <ng-template pTemplate="footer">
         <div class="flex gap-3">
-          <p-button icon="pi pi-times" label="Cancel" severity="secondary" />
-          <p-button icon="pi pi-save" label="Save" />
+          <p-button
+            size="small"
+            icon="pi pi-times"
+            label="Cancel"
+            severity="warn"
+          />
+          <p-button size="small" icon="pi pi-save" label="Save" />
         </div>
       </ng-template>
     </p-card>

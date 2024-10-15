@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject, Renderer2, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Message, TreeNode } from 'primeng/api';
+import { TreeNode } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputSwitchChangeEvent, InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextModule } from 'primeng/inputtext';
-import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { PickListModule } from 'primeng/picklist';
 import { TreeModule } from 'primeng/tree';
 import { tree } from './tree';
@@ -22,7 +22,7 @@ import { tree } from './tree';
     TreeModule,
     PickListModule,
     InputSwitchModule,
-    MessagesModule,
+    MessageModule,
     ButtonModule,
     InputTextModule,
     CalendarModule,
@@ -33,7 +33,13 @@ import { tree } from './tree';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  messages: Message[] = [{ severity: 'error', detail: 'Message Content' }];
+  renderer = inject(Renderer2);
+
+  messages = signal([
+    { severity: 'info', content: 'Dynamic Info Message' },
+    { severity: 'success', content: 'Dynamic Success Message' },
+    { severity: 'warn', content: 'Dynamic Warn Message' },
+  ]);
   cities = [
     { name: 'New York', code: 'NY' },
     { name: 'Rome', code: 'RM' },
@@ -94,5 +100,10 @@ export class AppComponent {
 
   nodeSelect(event: any): void {
     console.log(event);
+  }
+
+  switchTheme($event: InputSwitchChangeEvent): void {
+    // switch the class dark to the html tag
+    this.renderer[!$event.checked ? 'removeClass' : 'addClass'](document.documentElement, 'p-dark');
   }
 }

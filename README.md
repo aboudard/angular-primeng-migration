@@ -34,3 +34,43 @@ Create a custom theme using the primeng-sass-theme.
 It can be found here :
 [primeng-sass-theme](https://github.com/primefaces/primeng-sass-theme)
 
+## Step 2 : upgrade to Angular 18
+
+```bash
+ng update @angular/core@18 @angular/cli@18
+```
+
+Uninstall primeflex
+Remove the references to primeng css and primeflex css in styles.scss or angular.json
+
+Install Tailwind CSS for Angular
+
+[Tailwind CSS for Angular](https://tailwindcss.com/docs/guides/angular)
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+Configure the tailwind.config.js file
+
+Optimize the css bundle by separating the different bundles in angular.json
+
+```json
+"styles": [
+    {
+    "input": "node_modules/primeicons/primeicons.css",
+    "bundleName": "primeicons"
+    },
+    {
+    "input": "src/styles.scss",
+    "bundleName": "styles"
+    }
+]
+```
+
+Define your colors in the preset of PrimeNg.
+
+Replace the grid system with the Tailwind grid system.
+
+Configure the components with the preset system of PrimeNg v18.

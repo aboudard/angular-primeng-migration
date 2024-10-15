@@ -30,7 +30,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "node_modules/primeicons/primeicons.css",
+                "bundleName": "primeicons"
+              },
+              {
+                "input": "src/styles.scss",
+                "bundleName": "styles"
+              }
             ],
             "scripts": []
           },
