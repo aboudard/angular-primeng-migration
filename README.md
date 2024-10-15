@@ -1,27 +1,36 @@
-# TestPrime
+# Test Prime Migration
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+This is a test migration for PrimeNg from v17 to v18.
 
-## Development server
+## Theming
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The whole theming system is evolving, with no scss involved and only css variables created by the library during the configuration phase.
 
-## Code scaffolding
+## Layout
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The layout system was handled by the PrimeFlex library, which is replaced by TailwindCSS.
 
-## Build
+## Components
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Some components are deprecated and others are replaced. The most important changes are:
 
-## Running unit tests
+## Step 1 : Install the PrimeNg v17 theming system
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Install the libraries in v17 compatible versions
 
-## Running end-to-end tests
+List of the libraries and their versions:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```json
+{
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^17.13.0",
+}
+```
 
-## Further help
+### Install the theming system
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Create a custom theme using the primeng-sass-theme.
+It can be found here :
+[primeng-sass-theme](https://github.com/primefaces/primeng-sass-theme)
+
