@@ -12,6 +12,7 @@ import { MessageModule } from 'primeng/message';
 import { PickListModule } from 'primeng/picklist';
 import { TreeModule } from 'primeng/tree';
 import { tree } from './tree';
+import { MenubarModule } from 'primeng/menubar';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import { tree } from './tree';
     CalendarModule,
     DropdownModule,
     FormsModule,
+    MenubarModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -97,6 +99,19 @@ export class AppComponent {
   ];
   tree = tree;
   selectedFile!: TreeNode;
+
+  items = [
+    {
+        label: 'Home',
+        icon: 'pi pi-home',
+        routerLink: '/'
+    },
+    {
+        label: 'Features',
+        icon: 'pi pi-star',
+        routerLink: '/features'
+    }
+  ];
 
   nodeSelect(event: any): void {
     console.log(event);

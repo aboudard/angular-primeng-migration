@@ -41,6 +41,11 @@ ng update @angular/core@18 @angular/cli@18
 ```
 
 Uninstall primeflex
+  
+```bash
+npm uninstall primeflex
+```
+
 Remove the references to primeng css and primeflex css in styles.scss or angular.json
 
 Install Tailwind CSS for Angular
@@ -72,5 +77,18 @@ Optimize the css bundle by separating the different bundles in angular.json
 Define your colors in the preset of PrimeNg.
 
 Replace the grid system with the Tailwind grid system.
+
+Install PrimeCLT
+  
+```bash
+npm install -g primeclt
+```
+Run the `pf2wt` in a directory that contains files to be migrated.
+
+```bash
+pf2wt
+```
+
+
 
 Configure the components with the preset system of PrimeNg v18.

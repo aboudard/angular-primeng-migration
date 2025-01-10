@@ -1,8 +1,8 @@
 <h1>{{ title }}</h1>
 
-<div class="grid">
-  <div class="col-12 md:col-6">
-    <p-card header="Vertical" styleClass="p-fluid mb-3">
+<div class="grid grid-cols-12 gap-4">
+  <div class="col-span-12 md:col-span-6">
+    <p-card header="Vertical" styleClass="p-fluid mb-4">
       <div class="field">
         <label htmlFor="name1">Name</label>
         <input pInputText id="name1" type="text" />
@@ -17,8 +17,8 @@
       </div>
     </p-card>
 
-    <p-card header="Vertical Grid" styleClass="p-fluid">
-      <div class="p-formgrid grid">
+    <p-card header="Vertical Grid" styleClass="p-fluid mb-4">
+      <div class="p-formgrid grid grid-cols-12 gap-4">
         <div class="field col">
           <label htmlFor="name2">Name</label>
           <input pInputText id="name2" type="text" />
@@ -29,9 +29,14 @@
         </div>
       </div>
     </p-card>
+
+    <p-card header="Menubar">
+      <p-menubar [model]="items" />
+      <router-outlet></router-outlet>
+    </p-card>
   </div>
-  <div class="col-12 md:col-6">
-    <p-card header="Tree" styleClass="p-fluid mb-3">
+  <div class="col-span-12 md:col-span-6">
+    <p-card header="Tree" styleClass="p-fluid mb-4">
       @for (message of messages(); track message; let first = $first) {
       <p-message
         styleClass="mb-2"
@@ -41,7 +46,7 @@
       />
       }
       <p-tree
-        class="w-full md:w-30rem"
+        class="w-full md:w-[30rem]"
         (onNodeSelect)="nodeSelect($event)"
         [value]="tree"
         selectionMode="checkbox"
@@ -49,30 +54,30 @@
       />
     </p-card>
     <p-card header="Horizontal" styleClass="p-fluid">
-      <div class="field grid">
-        <label for="name3" class="col-12 mb-2 md:col-2 md:mb-0">Name</label>
-        <div class="col-12 md:col-10">
+      <div class="field grid grid-cols-12 gap-4">
+        <label for="name3" class="col-span-12 mb-2 md:col-span-2 md:mb-0">Name</label>
+        <div class="col-span-12 md:col-span-10">
           <input pInputText id="name3" type="text" />
         </div>
       </div>
-      <div class="field grid">
-        <label for="date3" class="col-12 mb-2 md:col-2 md:mb-0">Date</label>
-        <div class="col-12 md:col-10">
+      <div class="field grid grid-cols-12 gap-4">
+        <label for="date3" class="col-span-12 mb-2 md:col-span-2 md:mb-0">Date</label>
+        <div class="col-span-12 md:col-span-10">
           <p-calendar inputId="date3" [(ngModel)]="date"></p-calendar>
         </div>
       </div>
-      <div class="field grid">
-        <label for="date3" class="col-12 mb-2 md:col-2 md:mb-0">Switch</label>
-        <div class="col-12 md:col-10">
+      <div class="field grid grid-cols-12 gap-4">
+        <label for="date3" class="col-span-12 mb-2 md:col-span-2 md:mb-0">Switch</label>
+        <div class="col-span-12 md:col-span-10">
           <p-inputSwitch
             (onChange)="switchTheme($event)"
             [(ngModel)]="checked"
           />
         </div>
       </div>
-      <div class="field grid">
-        <label for="date3" class="col-12 mb-2 md:col-2 md:mb-0">Dropdown</label>
-        <div class="col-12 md:col-10">
+      <div class="field grid grid-cols-12 gap-4">
+        <label for="date3" class="col-span-12 mb-2 md:col-span-2 md:mb-0">Dropdown</label>
+        <div class="col-span-12 md:col-span-10">
           <p-dropdown
             [options]="cities"
             [(ngModel)]="selectedCity"
@@ -81,7 +86,7 @@
         </div>
       </div>
       <ng-template pTemplate="footer">
-        <div class="flex gap-3">
+        <div class="flex gap-4">
           <p-button
             size="small"
             icon="pi pi-times"
@@ -94,3 +99,4 @@
     </p-card>
   </div>
 </div>
+
