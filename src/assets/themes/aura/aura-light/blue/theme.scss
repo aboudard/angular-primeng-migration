@@ -1,0 +1,19 @@
+$primaryColor: #065e93 !default;
+$primaryDarkColor: #1e88e5 !default;
+$primaryDarkerColor: #1976d2 !default;
+$primaryTextColor: #ffffff !default;
+
+$highlightBg: #eff6ff !default;
+$highlightTextColor: $primaryDarkerColor !default;
+$highlightFocusBg: rgba($primaryColor, 0.24) !default;
+
+@import "../_variables";
+@import "./_fonts";
+@import "../../../../theme-base/_components";
+@import "../extensions/_extensions";
+
+@layer primeng {
+  html {
+    font-size: 13.8px;
+  }
+}

@@ -10,7 +10,11 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
 import { PickListModule } from 'primeng/picklist';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { TreeModule } from 'primeng/tree';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { PanelModule } from 'primeng/panel';
+
 import { tree } from './tree';
 
 @Component({
@@ -18,21 +22,30 @@ import { tree } from './tree';
   standalone: true,
   imports: [
     RouterOutlet,
+    SelectButtonModule,
     CardModule,
     TreeModule,
     PickListModule,
     InputSwitchModule,
     MessagesModule,
+    RadioButtonModule,
     ButtonModule,
     InputTextModule,
     CalendarModule,
     DropdownModule,
     FormsModule,
+    PanelModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  ingredient!: string;
+  stateOptions: any[] = [
+    { label: 'Administration', value: 'admin' },
+    { label: 'Analyse', value: 'analyse' },
+  ];
+  option = 'analyse';
   messages: Message[] = [{ severity: 'error', detail: 'Message Content' }];
   cities = [
     { name: 'New York', code: 'NY' },
